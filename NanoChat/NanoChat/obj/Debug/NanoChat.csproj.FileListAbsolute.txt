@@ -12,3 +12,4 @@ D:\Developed Project\Chat App\NanoChat\NanoChat\bin\Debug\NanoChat.exe.manifest
 D:\Developed Project\Chat App\NanoChat\NanoChat\bin\Debug\NanoChat.application
 D:\Developed Project\Chat App\NanoChat\NanoChat\obj\Debug\NanoChat.exe.manifest
 D:\Developed Project\Chat App\NanoChat\NanoChat\obj\Debug\NanoChat.application
+D:\Developed Project\Chat App\NanoChat\NanoChat\obj\Debug\NanoChat.csproj.CoreCompileInputs.cache

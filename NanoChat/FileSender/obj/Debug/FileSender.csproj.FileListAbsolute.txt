@@ -1,0 +1,9 @@
+C:\Users\Maijied\Desktop\FileSender\bin\Debug\FileSender.exe.config
+C:\Users\Maijied\Desktop\FileSender\bin\Debug\FileSender.exe
+C:\Users\Maijied\Desktop\FileSender\bin\Debug\FileSender.pdb
+C:\Users\Maijied\Desktop\FileSender\obj\Debug\FileSender.MainForm.resources
+C:\Users\Maijied\Desktop\FileSender\obj\Debug\FileSender.Properties.Resources.resources
+C:\Users\Maijied\Desktop\FileSender\obj\Debug\FileSender.csproj.GenerateResource.Cache
+C:\Users\Maijied\Desktop\FileSender\obj\Debug\FileSender.csproj.CoreCompileInputs.cache
+C:\Users\Maijied\Desktop\FileSender\obj\Debug\FileSender.exe
+C:\Users\Maijied\Desktop\FileSender\obj\Debug\FileSender.pdb

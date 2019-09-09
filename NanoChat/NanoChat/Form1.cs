@@ -8,8 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
-
+using System.Collections;
+using System.Threading;
+using System.IO;
+using System.Diagnostics;
 
 namespace NanoChat
 {
@@ -17,14 +21,24 @@ namespace NanoChat
     
         public partial class Form1 : Form
         {
+            
+            
             Socket sck;
             EndPoint epLocal, epRemote;
             byte[] buffer;
+            byte[] b1;
+        OpenFileDialog op;
+            string n;
 
-            public Form1()
+        public Form1()
             {
                 InitializeComponent();
+                       
             }
+
+            
+
+            
 
             private void Form1_Load(object sender, EventArgs e)
             {
@@ -51,8 +65,9 @@ namespace NanoChat
                         return ip.ToString();
                 }
                 return "127.0.0.1";
+            //throw new Exception("No network adapters with an IPv4 address in the system!");
 
-            }
+        }
             private void buttonConnect_Click(object sender, EventArgs e)
             {
             
@@ -105,7 +120,129 @@ namespace NanoChat
                 WindowState = FormWindowState.Minimized;
             }
 
-            private void buttonSend_Click(object sender, EventArgs e)
+        private void listMessage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void color_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Brown;
+            
+
+            Graphics g = CreateGraphics();
+
+            Pen brown = new Pen(Color.Brown);
+            g.FillRectangle(brown.Brush, 201, 400, 100, 50);
+        }
+
+        private void colorblue_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.BlueViolet;
+
+
+            Graphics g = CreateGraphics();
+
+            Pen brown = new Pen(Color.Brown);
+            g.FillRectangle(brown.Brush, 201, 400, 100, 50);
+        }
+
+        private void colorpink_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.HotPink;
+
+
+            Graphics g = CreateGraphics();
+
+            Pen brown = new Pen(Color.Brown);
+            g.FillRectangle(brown.Brush, 201, 400, 100, 50);
+        }
+
+        private void colorgray_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Honeydew;
+
+
+            Graphics g = CreateGraphics();
+
+            Pen brown = new Pen(Color.Brown);
+            g.FillRectangle(brown.Brush, 201, 400, 100, 50);
+        }
+
+        private void colorsea_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkSeaGreen;
+
+
+            Graphics g = CreateGraphics();
+
+            Pen brown = new Pen(Color.Brown);
+            g.FillRectangle(brown.Brush, 201, 400, 100, 50);
+        }
+
+        private void colorturquise_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.DarkTurquoise;
+
+
+            Graphics g = CreateGraphics();
+
+            Pen brown = new Pen(Color.Brown);
+            g.FillRectangle(brown.Brush, 201, 400, 100, 50);
+        }
+
+        private void schat_Click(object sender, EventArgs e)
+        {
+            if(listMessage.Items.Count>0)
+            {
+                using (TextWriter TW = new StreamWriter("list.txt"))
+                {
+                    foreach(string iteamText in listMessage.Items)
+                    {
+                        TW.WriteLine(iteamText);
+                    }
+                }
+                Process.Start("list.txt");
+            }
+        }
+
+       
+
+        private void browseFile_Click(object sender, EventArgs e)
+        {
+            op = new OpenFileDialog();
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                string t = textBox1.Text;
+                t = op.FileName;
+                FileInfo fi = new FileInfo(textBox1.Text = op.FileName);
+                n = fi.Name + "." + fi.Length;
+                TcpClient client = new TcpClient();
+                StreamWriter sw = new StreamWriter(client.GetStream());
+                sw.WriteLine(n);
+                sw.Flush();
+                label1.Text = "File Transferred....";
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sendFile_Click(object sender, EventArgs e)
+        {
+            TcpClient client = new TcpClient();
+            Stream s = client.GetStream();
+            b1 = File.ReadAllBytes(op.FileName);
+            s.Write(b1, 0, b1.Length);
+            client.Close();
+            label1.Text = "File Transferred....";
+        }
+
+        private void buttonSend_Click(object sender, EventArgs e)
             {
                 //Convert string message to byte
                 ASCIIEncoding aEncoding = new ASCIIEncoding();
